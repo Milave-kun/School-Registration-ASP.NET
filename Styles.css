@@ -1,0 +1,59 @@
+﻿/* Container for sidebar and main content */
+.container {
+    display: flex;
+    height: 100vh;
+}
+
+.sidebar {
+    width: 250px;
+    background-color: #333;
+    color: white;
+    padding-top: 20px;
+}
+
+    .sidebar ul {
+        list-style-type: none;
+        padding-left: 0;
+    }
+
+        .sidebar ul li {
+            padding: 10px;
+            text-align: center;
+        }
+
+            .sidebar ul li a {
+                color: white;
+                text-decoration: none;
+                display: block;
+            }
+
+                .sidebar ul li a:hover {
+                    background-color: #575757;
+                }
+
+.main-content {
+    flex-grow: 1;
+    padding: 20px;
+}
+
+/* Table styling */
+table.students-list {
+    width: 100%;
+    border-collapse: collapse;
+    margin-top: 20px;
+}
+
+    table.students-list th, table.students-list td {
+        border: 1px solid #ddd;
+        padding: 8px;
+        text-align: left;
+    }
+
+    table.students-list th {
+        background-color: #f2f2f2;
+    }
+
+/* Search and filter bar */
+.search-bar {
+    margin-bottom: 20px;
+}
