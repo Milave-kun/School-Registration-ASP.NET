@@ -94,6 +94,8 @@
   <ItemGroup>
     <Content Include="CollegeStudentList.aspx" />
     <Content Include="Dashboard.aspx" />
+    <Content Include="img\DatamexLogo.png" />
+    <Content Include="Loading.aspx" />
     <Content Include="SHSStudentList.aspx" />
     <Content Include="StudentRegistration.aspx" />
     <Content Include="Styles.css" />
@@ -113,6 +115,13 @@
     </Compile>
     <Compile Include="Dashboard.aspx.vb">
       <DependentUpon>Dashboard.aspx</DependentUpon>
+      <SubType>ASPXCodebehind</SubType>
+    </Compile>
+    <Compile Include="Loading.aspx.designer.vb">
+      <DependentUpon>Loading.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Loading.aspx.vb">
+      <DependentUpon>Loading.aspx</DependentUpon>
       <SubType>ASPXCodebehind</SubType>
     </Compile>
     <Compile Include="My Project\AssemblyInfo.vb" />

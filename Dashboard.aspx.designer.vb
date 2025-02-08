@@ -57,22 +57,4 @@ Partial Public Class Dashboard1
     '''To modify move field declaration from designer file to code-behind file.
     '''</remarks>
     Protected WithEvents lblFemaleStudents As Global.System.Web.UI.WebControls.Label
-
-    '''<summary>
-    '''lblSectionA control.
-    '''</summary>
-    '''<remarks>
-    '''Auto-generated field.
-    '''To modify move field declaration from designer file to code-behind file.
-    '''</remarks>
-    Protected WithEvents lblSectionA As Global.System.Web.UI.WebControls.Label
-
-    '''<summary>
-    '''lblSectionB control.
-    '''</summary>
-    '''<remarks>
-    '''Auto-generated field.
-    '''To modify move field declaration from designer file to code-behind file.
-    '''</remarks>
-    Protected WithEvents lblSectionB As Global.System.Web.UI.WebControls.Label
 End Class

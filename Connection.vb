@@ -33,8 +33,8 @@ Public Class Dashboard
         Dim db As New Connection()
         Dim query As String = "SELECT 
             (SELECT COUNT(*) FROM students) AS TotalStudents,
-            (SELECT COUNT(*) FROM students WHERE level = 'College') AS CollegeStudents,
-            (SELECT COUNT(*) FROM students WHERE level = 'SHS') AS SHSStudents,
+            (SELECT COUNT(*) FROM students WHERE level IN ('Grade 11', 'Grade 12')) AS SHSStudents,
+            (SELECT COUNT(*) FROM students WHERE level IN ('1st Year College', '2nd Year College', '3rd Year College', '4th Year College')) AS CollegeStudents,
             (SELECT COUNT(*) FROM students WHERE gender = 'Male') AS MaleStudents,
             (SELECT COUNT(*) FROM students WHERE gender = 'Female') AS FemaleStudents,
             (SELECT COUNT(*) FROM students WHERE section = 'A') AS SectionA,
@@ -46,8 +46,8 @@ Public Class Dashboard
             Using reader As SqlDataReader = cmd.ExecuteReader()
                 If reader.Read() Then
                     stats("TotalStudents") = reader("TotalStudents")
+                    stats("SHSStudents") = reader("SHSStudents") ' Now includes both Grade 11 and Grade 12
                     stats("CollegeStudents") = reader("CollegeStudents")
-                    stats("SHSStudents") = reader("SHSStudents")
                     stats("MaleStudents") = reader("MaleStudents")
                     stats("FemaleStudents") = reader("FemaleStudents")
                     stats("SectionA") = reader("SectionA")
@@ -57,5 +57,7 @@ Public Class Dashboard
         End Using
         Return stats
     End Function
+
 End Class
+
 

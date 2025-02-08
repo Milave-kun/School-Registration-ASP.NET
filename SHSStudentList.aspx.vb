@@ -8,11 +8,18 @@
             BindGrid()
         End If
     End Sub
-
     Private Sub BindGrid()
-        gvStudents.DataSource = students.GetStudents("SHS", txtSearch.Text, ddlFilter.SelectedValue)
+        ' Retrieve only college students (1st-4th year)
+        gvStudents.DataSource = students.GetStudents(
+        "SHS",
+        txtSearch.Text,
+        ddlFilterSection.SelectedValue,  ' Filter by section
+        ddlFilterGender.SelectedValue,   ' Filter by gender
+        ddlFilterGrade.SelectedValue     ' Filter by grade (1st-4th year)
+    )
         gvStudents.DataBind()
     End Sub
+
 
     Protected Sub btnSearch_Click(sender As Object, e As EventArgs)
         BindGrid()
@@ -32,9 +39,10 @@
         Dim firstName As String = DirectCast(gvStudents.Rows(e.RowIndex).Cells(1).Controls(0), TextBox).Text
         Dim lastName As String = DirectCast(gvStudents.Rows(e.RowIndex).Cells(2).Controls(0), TextBox).Text
         Dim gender As String = DirectCast(gvStudents.Rows(e.RowIndex).Cells(3).Controls(0), TextBox).Text
-        Dim section As String = DirectCast(gvStudents.Rows(e.RowIndex).Cells(4).Controls(0), TextBox).Text
+        Dim level As String = DirectCast(gvStudents.Rows(e.RowIndex).Cells(4).Controls(0), TextBox).Text
+        Dim section As String = DirectCast(gvStudents.Rows(e.RowIndex).Cells(5).Controls(0), TextBox).Text
 
-        students.UpdateStudent(student_id, firstName, lastName, gender, "SHS", section) ' Passing student_id
+        students.UpdateStudent(student_id, firstName, lastName, gender, level, section) ' Passing student_id
 
         gvStudents.EditIndex = -1
         BindGrid()
@@ -50,4 +58,6 @@
         students.DeleteStudent(student_id) ' Passing student_id
         BindGrid()
     End Sub
+
+
 End Class

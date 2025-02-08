@@ -4,84 +4,125 @@
 <html>
 <head>
     <title>SHS Student List</title>
+    <!-- Bootstrap CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
     <style>
+        /* Sidebar styles */
         .sidebar {
-            width: 200px;
+            width: 400px;
             position: fixed;
             top: 0;
             left: 0;
             height: 100%;
-            background-color: #333;
+            background-color: white;
             padding-top: 20px;
+            text-align: center;
+            box-shadow: 4px 0px 10px rgba(0, 0, 0, 0.1);
+        }
+        .sidebar-logo {
+            width: 280px;
+            height: auto;
+            margin-bottom: 30px;
         }
         .sidebar a {
             display: block;
-            color: white;
-            padding: 10px;
+            color: black;
+            padding: 20px;
             text-decoration: none;
+            font-size: 22px;
+            font-weight: bold;
+            text-transform: uppercase;
+            transition: 0.3s;
         }
         .sidebar a:hover {
-            background-color: #575757;
+            background-color: maroon;
+            color: white;
         }
-        .content {
-            margin-left: 220px;
-            padding: 20px;
+
+        /* Main content background */
+        .main-content {
+            margin-left: 420px;
+            padding: 30px;
+            background-color: maroon;
+            min-height: 100vh;
+            color: white;
         }
-        .search-box {
-            margin-bottom: 20px;
-        }
-        .filter-box {
+        .search-box, .filter-box {
             margin-bottom: 20px;
         }
         .grid-container {
-            margin-top: 20px;
+            background: white;
+            padding: 20px;
+            border-radius: 15px;
+            box-shadow: 5px 5px 15px rgba(0, 0, 0, 0.2);
+            color: black;
         }
     </style>
 </head>
 <body>
     <form id="form1" runat="server">
+        <!-- Sidebar Navigation -->
         <div class="sidebar">
+            <img src="img/DatamexLogo.png" alt="School Logo" class="sidebar-logo">
             <a href="Dashboard.aspx">Dashboard</a>
             <a href="StudentRegistration.aspx">Register Student</a>
             <a href="SHSStudentList.aspx">SHS Students</a>
             <a href="CollegeStudentList.aspx">College Students</a>
         </div>
         
-        <div class="content">
-            <h2>SHS Student List</h2>
+        <!-- Main Content -->
+        <div class="main-content">
+            <h2 class="fw-bold text-center">SHS Student List</h2>
             
             <div class="search-box">
-                <asp:TextBox ID="txtSearch" runat="server" placeholder="Search by name..."></asp:TextBox>
-                <asp:Button ID="btnSearch" runat="server" Text="Search" OnClick="btnSearch_Click" />
+                <asp:TextBox ID="txtSearch" runat="server" CssClass="form-control" placeholder="Search by name..."></asp:TextBox>
+                <asp:Button ID="btnSearch" runat="server" CssClass="btn btn-light mt-2" Text="Search" OnClick="btnSearch_Click" />
             </div>
             
             <div class="filter-box">
-                <asp:DropDownList ID="ddlFilter" runat="server" AutoPostBack="true" OnSelectedIndexChanged="ddlFilter_SelectedIndexChanged">
-                    <asp:ListItem Value="">All</asp:ListItem>
-                    <asp:ListItem Value="SectionA">Section A</asp:ListItem>
-                    <asp:ListItem Value="SectionB">Section B</asp:ListItem>
+                <asp:Label ID="lblFilterGrade" runat="server" Text="Filter by Grade Level: " CssClass="fw-bold ms-3" />
+                <asp:DropDownList ID="ddlFilterGrade" runat="server" CssClass="form-select" AutoPostBack="true" OnSelectedIndexChanged="ddlFilter_SelectedIndexChanged">
+                    <asp:ListItem Value="">All Grade Level</asp:ListItem>
+                    <asp:ListItem Value="Grade 11">SHS Grade 11</asp:ListItem>
+                    <asp:ListItem Value="Grade 12">SHS Grade 12</asp:ListItem>
+                </asp:DropDownList>
+
+                <asp:Label ID="lblFilterSection" runat="server" Text="Filter by Section: " CssClass="fw-bold ms-3" />
+                <asp:DropDownList ID="ddlFilterSection" runat="server" CssClass="form-select" AutoPostBack="true" OnSelectedIndexChanged="ddlFilter_SelectedIndexChanged">
+                    <asp:ListItem Value="">All Sections</asp:ListItem>
+                    <asp:ListItem Value="A">A</asp:ListItem>
+                    <asp:ListItem Value="B">B</asp:ListItem>
+                </asp:DropDownList>
+                
+                <asp:Label ID="lblFilterGender" runat="server" Text="Filter by Gender: " CssClass="fw-bold ms-3" />
+                <asp:DropDownList ID="ddlFilterGender" runat="server" CssClass="form-select" AutoPostBack="true" OnSelectedIndexChanged="ddlFilter_SelectedIndexChanged">
+                    <asp:ListItem Value="">All Genders</asp:ListItem>
                     <asp:ListItem Value="Male">Male</asp:ListItem>
                     <asp:ListItem Value="Female">Female</asp:ListItem>
                 </asp:DropDownList>
+                
             </div>
             
             <div class="grid-container">
-                <asp:GridView ID="gvStudents" runat="server" AutoGenerateColumns="False" 
-                    OnRowEditing="gvStudents_RowEditing" OnRowUpdating="gvStudents_RowUpdating"
-                    OnRowCancelingEdit="gvStudents_RowCancelingEdit" OnRowDeleting="gvStudents_RowDeleting"
-                    DataKeyNames="student_id">
+                <asp:GridView ID="gvStudents" runat="server" CssClass="table table-striped table-bordered"
+                    AutoGenerateColumns="False" OnRowEditing="gvStudents_RowEditing" 
+                    OnRowUpdating="gvStudents_RowUpdating" OnRowCancelingEdit="gvStudents_RowCancelingEdit" 
+                    OnRowDeleting="gvStudents_RowDeleting" DataKeyNames="student_id">
                     <Columns>
                         <asp:BoundField DataField="student_id" HeaderText="ID" ReadOnly="True" /> 
                         <asp:BoundField DataField="first_name" HeaderText="First Name" />
                         <asp:BoundField DataField="last_name" HeaderText="Last Name" />
                         <asp:BoundField DataField="gender" HeaderText="Gender" />
+                        <asp:BoundField DataField="level" HeaderText="Level" />
                         <asp:BoundField DataField="section" HeaderText="Section" />
                         <asp:CommandField ShowEditButton="True" ShowDeleteButton="True" />
                     </Columns>
                 </asp:GridView>
-
             </div>
         </div>
     </form>
+
+    <!-- Bootstrap JS -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
 </body>
 </html>

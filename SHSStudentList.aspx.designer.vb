@@ -41,13 +41,58 @@ Partial Public Class SHSStudentList
     Protected WithEvents btnSearch As Global.System.Web.UI.WebControls.Button
 
     '''<summary>
-    '''ddlFilter control.
+    '''lblFilterGrade control.
     '''</summary>
     '''<remarks>
     '''Auto-generated field.
     '''To modify move field declaration from designer file to code-behind file.
     '''</remarks>
-    Protected WithEvents ddlFilter As Global.System.Web.UI.WebControls.DropDownList
+    Protected WithEvents lblFilterGrade As Global.System.Web.UI.WebControls.Label
+
+    '''<summary>
+    '''ddlFilterGrade control.
+    '''</summary>
+    '''<remarks>
+    '''Auto-generated field.
+    '''To modify move field declaration from designer file to code-behind file.
+    '''</remarks>
+    Protected WithEvents ddlFilterGrade As Global.System.Web.UI.WebControls.DropDownList
+
+    '''<summary>
+    '''lblFilterSection control.
+    '''</summary>
+    '''<remarks>
+    '''Auto-generated field.
+    '''To modify move field declaration from designer file to code-behind file.
+    '''</remarks>
+    Protected WithEvents lblFilterSection As Global.System.Web.UI.WebControls.Label
+
+    '''<summary>
+    '''ddlFilterSection control.
+    '''</summary>
+    '''<remarks>
+    '''Auto-generated field.
+    '''To modify move field declaration from designer file to code-behind file.
+    '''</remarks>
+    Protected WithEvents ddlFilterSection As Global.System.Web.UI.WebControls.DropDownList
+
+    '''<summary>
+    '''lblFilterGender control.
+    '''</summary>
+    '''<remarks>
+    '''Auto-generated field.
+    '''To modify move field declaration from designer file to code-behind file.
+    '''</remarks>
+    Protected WithEvents lblFilterGender As Global.System.Web.UI.WebControls.Label
+
+    '''<summary>
+    '''ddlFilterGender control.
+    '''</summary>
+    '''<remarks>
+    '''Auto-generated field.
+    '''To modify move field declaration from designer file to code-behind file.
+    '''</remarks>
+    Protected WithEvents ddlFilterGender As Global.System.Web.UI.WebControls.DropDownList
 
     '''<summary>
     '''gvStudents control.
